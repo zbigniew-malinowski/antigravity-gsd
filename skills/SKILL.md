@@ -30,11 +30,12 @@ You are equipped with a global executable tool called `antigravity-gsd-init`.
 
 If the user explicitly asks to update their Antigravity GSD installation:
 
-1. Run `cd ~/.gemini/antigravity-gsd && git pull` in the terminal to fetch the
-   latest upstream translations.
-2. Tell the user that the global installation has been updated.
-3. If they are currently inside a project workspace, run `antigravity-gsd-init`
-   to refresh the local symlinks, just to be safe.
+1. Instruct the user to run `/gsd:update`.
+2. If the user prefers you to do it for them, run the following commands
+   sequentially:
+   - `cd ~/.gemini/antigravity-gsd && git pull`
+   - `antigravity-gsd-init` (only if inside a project directory)
+3. Confirm the update is complete.
 
 ## Background Context
 

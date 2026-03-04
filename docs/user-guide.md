@@ -242,15 +242,20 @@ editable any time:
 
 ## Keeping Up with GSD
 
-Because GSD is actively developed, a GitHub Actions pipeline automatically
-translates the latest upstream logic into the Antigravity workflows in this
-repository.
+Because GSD is actively developed, we continuously translate the latest upstream
+logic into these Antigravity workflows.
 
 To pull these updates down to your machine, just open Antigravity (in any
 project) and say:
 
 > **"Update my GSD installation"**
 
-The Antigravity GSD Skill will run `git pull` on your global installation and
-automatically refresh your local `.agents/workflows` symlinks so you immediately
-have the newest capabilities.
+Alternatively, you can run the update workflow directly:
+
+```
+/gsd:update
+```
+
+The Antigravity GSD Skill will pull the latest translations and automatically
+refresh your local `.agents/workflows` symlinks so you immediately have the
+newest capabilities.

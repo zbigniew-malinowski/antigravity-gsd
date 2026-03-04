@@ -127,21 +127,20 @@ any conversion.
 This means you can switch between Gemini CLI GSD and Antigravity GSD within the
 same project. They speak the same language.
 
-## The Sync Script
+## The Update Workflow
 
-GSD is actively developed. The `sync-gsd.sh` script addresses the maintenance
-problem:
+GSD is actively developed. The `/gsd:update` command addresses the maintenance
+problem for users:
 
-1. Reads the installed GSD version from `~/.gemini/get-shit-done/VERSION`
-2. Compares against the version recorded in `~/.agents/.gsd-synced-version`
-3. Diffs the key source workflow files against what this adaptation was built
-   from
-4. Outputs a structured summary: new steps added, modified steps, new template
-   fields, deprecated patterns
+1. Runs `git pull` in the global `~/.gemini/antigravity-gsd` directory.
+2. Refreshes the local project's `.agents/workflows/` symlinks.
 
-The script intentionally does **not** auto-update the Antigravity workflows. GSD
-changes often need interpretation (a `Task()` subagent call can't be directly
-ported). The diff is shown so you can review and adopt changes deliberately.
+This ensures your project always has the latest Antigravity translations of
+upstream GSD improvements. You can trigger this by saying "Update GSD" or
+running the command directly.
+
+For details on how upstream changes are translated from the Claude Code source,
+see the [Maintainer Guide](maintainer-guide.md).
 
 ## What Gets Skipped
 

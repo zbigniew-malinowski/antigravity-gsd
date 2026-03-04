@@ -34,6 +34,7 @@ all three.
 | [How Antigravity differs](docs/antigravity-differences.md)                      | Architectural differences and tradeoffs   |
 | [The Antigravity adaptation](docs/adaptation.md)                                | How this port works technically           |
 | [User guide](docs/user-guide.md)                                                | How to use it — workflow, commands, tips  |
+| [Maintainer guide](docs/maintainer-guide.md)                                    | For developers contributing to this repo  |
 
 ## Installation
 
@@ -72,21 +73,24 @@ terminal and reload your Antigravity window to expose the `/gsd:*` commands)._
 ## Keeping Up with GSD Updates
 
 Because GSD is actively developed, we use an automated LLM pipeline to translate
-upstream logic changes directly into Antigravity markdown workflows.
+upstream logic changes into these Antigravity workflows.
 
-When GSD ships a new version, a maintainer running inside this repository
-directory simply executes:
+When new features are released, you can pull the latest updates to your global
+installation by simply opening Antigravity and saying:
 
-```bash
-./scripts/maintainer-sync.sh
+> **"Update my GSD installation"**
+
+Alternatively, you can run the update workflow directly:
+
+```
+/gsd:update
 ```
 
-This script fetches the upstream diffs, constructs a prompt with our adapter
-rules (`adaptation.md`), and invokes the local `gemini` CLI to intelligently
-translate and upgrade the local workflow files right in front of you.
+This will run `git pull` on your global installation and refresh the workflow
+symlinks in your current project.
 
-Once reviewed and pushed to `main`, all downstream users get the upgrade via the
-"Update my GSD installation" natural language command.
+For details on how changes are propagated from the upstream repository, see the
+[Maintainer Guide](docs/maintainer-guide.md).
 
 ## Reverting
 
