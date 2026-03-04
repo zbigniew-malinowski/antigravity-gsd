@@ -4,9 +4,11 @@ This guide covers everything you need to use GSD through Antigravity.
 
 ## Prerequisites
 
-1. Install the workflows: `./scripts/install.sh` from this repo
-2. Make sure you're working inside a project directory (with an existing git
-   repo, or one you're happy to `git init`)
+1. Run the global installer (see the main README `curl` command).
+2. Open Antigravity in your project directory (with an existing git repo, or one
+   you're happy to `git init`).
+3. Say: **"Let's start a GSD project"** to initialize the workspace
+   `slash-commands`.
 
 ---
 
@@ -231,7 +233,7 @@ editable any time:
 When GSD ships updates:
 
 ```bash
-./scripts/sync-gsd.sh
+~/.gemini/antigravity-gsd/scripts/sync-gsd.sh
 ```
 
 Shows what changed in the upstream GSD workflows since this adaptation was
