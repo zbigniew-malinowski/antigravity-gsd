@@ -74,20 +74,19 @@ terminal and reload your Antigravity window to expose the `/gsd:*` commands)._
 Because GSD is actively developed, we use an automated LLM pipeline to translate
 upstream logic changes directly into Antigravity markdown workflows.
 
-To enable the daily auto-sync in your fork:
+When GSD ships a new version, a maintainer opens Antigravity in this repository
+directory and runs:
 
-1. Add your Anthropic API key as a repository secret: `ANTHROPIC_API_KEY`
-2. Ensure GitHub Actions are enabled.
-
-The Action runs nightly, reads the upstream changes, uses `claude-3-7-sonnet`
-(guided by the `adaptation.md` rules) to translate the new workflow logic into
-Antigravity's paradigm, and opens a Pull Request for you to review.
-
-If you want to manually run the comparison script yourself:
-
-```bash
-node ~/.gemini/antigravity-gsd/scripts/auto-sync.js
 ```
+/gsd-maintainer:sync
+```
+
+This internal workflow fetches the upstream diffs, reads the adaptation rules,
+and uses the Antigravity agent to intelligently translate and upgrade the local
+workflow files right in front of you.
+
+Once approved and pushed to `main`, all downstream users get the upgrade via the
+"Update my GSD installation" natural language command.
 
 ## Reverting
 
