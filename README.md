@@ -74,18 +74,18 @@ terminal and reload your Antigravity window to expose the `/gsd:*` commands)._
 Because GSD is actively developed, we use an automated LLM pipeline to translate
 upstream logic changes directly into Antigravity markdown workflows.
 
-When GSD ships a new version, a maintainer opens Antigravity in this repository
-directory and runs:
+When GSD ships a new version, a maintainer running inside this repository
+directory simply executes:
 
+```bash
+./scripts/maintainer-sync.sh
 ```
-/gsd-maintainer:sync
-```
 
-This internal workflow fetches the upstream diffs, reads the adaptation rules,
-and uses the Antigravity agent to intelligently translate and upgrade the local
-workflow files right in front of you.
+This script fetches the upstream diffs, constructs a prompt with our adapter
+rules (`adaptation.md`), and invokes the local `gemini` CLI to intelligently
+translate and upgrade the local workflow files right in front of you.
 
-Once approved and pushed to `main`, all downstream users get the upgrade via the
+Once reviewed and pushed to `main`, all downstream users get the upgrade via the
 "Update my GSD installation" natural language command.
 
 ## Reverting
