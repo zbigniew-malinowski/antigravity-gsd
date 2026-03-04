@@ -6,21 +6,21 @@ set -euo pipefail
 
 INSTALL_DIR="$HOME/.gemini/antigravity-gsd"
 BIN_DIR="$HOME/.local/bin"
-GEMINI_MD="$HOME/.gemini/GEMINI.md"
 SYNCED_VERSION_FILE="$HOME/.agents/.gsd-synced-version"
-GSD_SECTION_MARKER="<!-- antigravity-gsd-global-context -->"
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo " GSD ► ANTIGRAVITY GLOBAL UNINSTALL"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-HAS_GEMINI_SECTION=false
-if grep -q "$GSD_SECTION_MARKER" "$GEMINI_MD" 2>/dev/null; then
-  HAS_GEMINI_SECTION=true
+SKILLS_DIR="$HOME/.agents/skills/gsd-setup"
+
+HAS_SKILL=false
+if [ -d "$SKILLS_DIR" ]; then
+  HAS_SKILL=true
 fi
 
-if [ ! -d "$INSTALL_DIR" ] && [ "$HAS_GEMINI_SECTION" = false ] && [ ! -f "$BIN_DIR/antigravity-gsd-init" ]; then
+if [ ! -d "$INSTALL_DIR" ] && [ "$HAS_SKILL" = false ] && [ ! -f "$BIN_DIR/antigravity-gsd-init" ]; then
   echo "Nothing to uninstall — no global GSD installation found."
   exit 0
 fi
@@ -33,8 +33,8 @@ fi
 if [ -L "$BIN_DIR/antigravity-gsd-init" ] || [ -f "$BIN_DIR/antigravity-gsd-init" ]; then
   echo "  Executable $BIN_DIR/antigravity-gsd-init"
 fi
-if [ "$HAS_GEMINI_SECTION" = true ]; then
-  echo "  GSD section from $GEMINI_MD"
+if [ "$HAS_SKILL" = true ]; then
+  echo "  Global Antigravity Skill at $SKILLS_DIR"
 fi
 if [ -f "$SYNCED_VERSION_FILE" ]; then
   echo "  $SYNCED_VERSION_FILE"
@@ -59,12 +59,9 @@ if [ -L "$BIN_DIR/antigravity-gsd-init" ] || [ -f "$BIN_DIR/antigravity-gsd-init
   echo "  ✓ Removed executable tool"
 fi
 
-# Remove GSD section from GEMINI.md
-if [ "$HAS_GEMINI_SECTION" = true ]; then
-  TEMP=$(mktemp)
-  sed "/$GSD_SECTION_MARKER/,/$GSD_SECTION_MARKER/d" "$GEMINI_MD" > "$TEMP"
-  mv "$TEMP" "$GEMINI_MD"
-  echo "  ✓ Removed GSD section from GEMINI.md"
+if [ -d "$HOME/.agents/skills/gsd-setup" ]; then
+  rm -rf "$HOME/.agents/skills/gsd-setup"
+  echo "  ✓ Removed global GSD Antigravity Skill"
 fi
 
 if [ -f "$SYNCED_VERSION_FILE" ]; then

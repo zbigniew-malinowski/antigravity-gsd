@@ -31,41 +31,13 @@ chmod +x "$INSTALL_DIR/scripts/init-workspace.sh"
 
 export PATH="$BIN_DIR:$PATH"
 
-# 3. Update global GEMINI.md instructions
-GSD_SECTION_MARKER="<!-- antigravity-gsd-global-context -->"
+# 3. Install the Global Antigravity Skill
+echo "Installing global Antigravity Skill..."
+SKILLS_DIR="$HOME/.agents/skills/gsd-setup"
+mkdir -p "$SKILLS_DIR"
+ln -sf "$INSTALL_DIR/skills/SKILL.md" "$SKILLS_DIR/SKILL.md"
 
-mkdir -p "$(dirname "$GEMINI_MD")"
-touch "$GEMINI_MD"
-
-if grep -q "$GSD_SECTION_MARKER" "$GEMINI_MD" 2>/dev/null; then
-  echo "GEMINI.md already has GSD instructions (updating in place)..."
-  TEMP=$(mktemp)
-  sed "/$GSD_SECTION_MARKER/,/$GSD_SECTION_MARKER/d" "$GEMINI_MD" > "$TEMP"
-  mv "$TEMP" "$GEMINI_MD"
-fi
-
-cat >> "$GEMINI_MD" << 'EOF'
-
-<!-- antigravity-gsd-global-context -->
-# GSD Project Context
-
-If `.planning/STATE.md` exists in the local workspace, read it at the
-start of every session. This is a GSD project — STATE.md contains current
-position, recent decisions, and what to do next.
-
-## Workspace Initialization
-
-If the user wants to start a GSD project (or asks about GSD), check if `.agents/workflows/gsd-new-project.md` exists locally. 
-If it DOES NOT exist, you MUST run the `antigravity-gsd-init` command in the terminal to initialize the workspace with the necessary slash commands, then instruct the user to type `/gsd:new-project`.
-
-## Single-Session Model
-
-Each major step should be a fresh chat for context hygiene:
-  /gsd:plan-phase N → new chat → /gsd:execute-phase N → new chat → /gsd:verify-work N
-<!-- antigravity-gsd-global-context -->
-EOF
-
-echo "  ✓ GEMINI.md updated"
+echo "  ✓ Global GSD Skill installed"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

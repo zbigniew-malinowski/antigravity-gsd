@@ -44,15 +44,15 @@ and painless, we use a single global installation and a workspace setup tool.
 ### 1. Global Install
 
 Run this one-liner in your terminal to clone the repo, install the workspace
-helper, and update your global Antigravity instructions:
+helper, and install the global Antigravity setup skill:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/zbigniew-malinowski/antigravity-gsd/main/scripts/install-global.sh)"
 ```
 
 _Note: This will install the repo to `~/.gemini/antigravity-gsd`, link an
-executable to `~/.local/bin/antigravity-gsd-init`, and update your
-`~/.gemini/GEMINI.md`._
+executable to `~/.local/bin/antigravity-gsd-init`, and install a setup Skill to
+`~/.agents/skills/gsd-setup/SKILL.md`._
 
 ### 2. Getting Started in a Project
 
@@ -87,10 +87,10 @@ decide what to adopt.
 ~/.gemini/antigravity-gsd/scripts/uninstall.sh
 ```
 
-Removes the global repo, the `antigravity-gsd-init` tool, and clears the
-GEMINI.md additions. Does not touch your existing Gemini CLI GSD commands or any
-`.planning/` directories inside your projects. The local `.agents/workflows`
-symlinks will remain but safely point nowhere.
+Removes the global repo, the `antigravity-gsd-init` tool, and the global GSD
+Skill. Does not touch your existing Gemini CLI GSD commands or any `.planning/`
+directories inside your projects. The local `.agents/workflows` symlinks will
+remain but safely point nowhere.
 
 ## Project Structure
 
