@@ -242,11 +242,15 @@ editable any time:
 
 ## Keeping Up with GSD
 
-When GSD ships updates:
+When GSD ships updates, the GitHub Actions pipeline will automatically open a
+Pull Request translating the new upstream features into the Antigravity
+workflows.
+
+You can review this PR and merge it. If you want to run the sync locally:
 
 ```bash
-~/.gemini/antigravity-gsd/scripts/sync-gsd.sh
+node ~/.gemini/antigravity-gsd/scripts/auto-sync.js
 ```
 
-Shows what changed in the upstream GSD workflows since this adaptation was
-built. Review the diff and update the Antigravity workflow files as appropriate.
+This runs an LLM translation over the upstream diffs and modifies your local
+workflow files.
