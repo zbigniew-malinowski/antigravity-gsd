@@ -38,7 +38,14 @@ If they choose mapping, stop and tell them to run `/gsd:map-codebase` first.
 
 ## Step 3: Deep Questioning
 
-Ask openly (not a numbered list — genuine conversation):
+Check if `--auto` was provided in the user's prompt.
+
+**If `--auto` IS provided:** Skip questioning. Read the user's prompt and any
+attached documents (like a PRD). Treat the provided information as the project
+goal and proceed immediately.
+
+**If `--auto` IS NOT provided:** Ask openly (not a numbered list — genuine
+conversation):
 
 > **What do you want to build?**
 
@@ -66,7 +73,11 @@ Loop until they choose option 1.
 
 ## Step 4: Workflow Preferences
 
-Ask (numbered list — user replies with number):
+**If `--auto` IS provided:** Skip asking questions. Use these default
+preferences: Standard depth, commit_docs=true, research=true, plan_check=true,
+verifier=true.
+
+**If `--auto` IS NOT provided:** Ask (numbered list — user replies with number):
 
 > **How thorough should planning be?**
 >

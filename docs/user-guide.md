@@ -43,6 +43,18 @@ Antigravity will:
 
 **Then:** Open a new chat, run `/gsd:progress` to see your roadmap.
 
+### Skipping Interactive Setup (`--auto`)
+
+If you already have a Product Requirements Document (PRD) or a very clear idea
+of what you want to build, you can skip the interactive questioning:
+
+1. Attach your document to the chat (using the `@` menu or drag-and-drop).
+2. Run: `/gsd:new-project --auto Use the attached PRD to generate a roadmap`
+
+Antigravity will skip questioning, use sensible default preferences (Standard
+depth, commit docs, auto-verify), read your attached document, and immediately
+generate the `PROJECT.md`, `REQUIREMENTS.md`, and `ROADMAP.md` files.
+
 ---
 
 ## The Phase Loop
