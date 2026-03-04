@@ -7,6 +7,10 @@ originally built for Claude Code. This project ports its core methodology —
 structured questioning, roadmap management, atomic XML task plans, and
 goal-backward verification — into Antigravity's workflow system.
 
+The repo does not directly use your local GSD installation, used with Gemini CLI
+or Claude Code. However, we periodically translate upstream logic changes into
+these Antigravity workflows.
+
 ## What You Get
 
 - `/gsd:new-project` — Deep questioning → PROJECT.md → REQUIREMENTS.md →
@@ -72,22 +76,22 @@ terminal and reload your Antigravity window to expose the `/gsd:*` commands)._
 
 ## Keeping Up with GSD Updates
 
-Because GSD is actively developed, we use an automated LLM pipeline to translate
-upstream logic changes into these Antigravity workflows.
+Because GSD is actively developed, we periodically translate upstream logic
+changes into these Antigravity workflows.
 
 When new features are released, you can pull the latest updates to your global
-installation by simply opening Antigravity and saying:
-
-> **"Update my GSD installation"**
-
-Alternatively, you can run the update workflow directly:
+installation by simply running:
 
 ```
 /gsd:update
 ```
 
-This will run `git pull` on your global installation and refresh the workflow
-symlinks in your current project.
+This will run `git pull` on your global installation of antigravity-gsd and
+refresh the workflow symlinks in your current project.
+
+NOTE: this repo does not link to your GSD installation used by Gemini CLI or
+Claude Code. If you want to update your GSD installation there, you will need to
+follow its update instructions separately.
 
 For details on how changes are propagated from the upstream repository, see the
 [Maintainer Guide](docs/maintainer-guide.md).
