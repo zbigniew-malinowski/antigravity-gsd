@@ -12,6 +12,7 @@ You are equipped with a global executable tool called `antigravity-gsd-init`.
 - When the user says "Let's start a GSD project"
 - When the user says "Set up GSD" or "Install GSD here"
 - When the user tries to run `/gsd:new-project` but the command cannot be found.
+- When the user asks to "update GSD" or "pull the latest GSD updates"
 
 ## Execution Steps
 
@@ -24,6 +25,16 @@ You are equipped with a global executable tool called `antigravity-gsd-init`.
 4. Tell the user that the workspace is now initialized.
 5. Instruct the user to type `/gsd:new-project` (or whichever `/gsd:*` command
    they requested).
+
+## Execution Steps: Updating GSD
+
+If the user explicitly asks to update their Antigravity GSD installation:
+
+1. Run `cd ~/.gemini/antigravity-gsd && git pull` in the terminal to fetch the
+   latest upstream translations.
+2. Tell the user that the global installation has been updated.
+3. If they are currently inside a project workspace, run `antigravity-gsd-init`
+   to refresh the local symlinks, just to be safe.
 
 ## Background Context
 
