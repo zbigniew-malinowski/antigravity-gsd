@@ -30,7 +30,7 @@ if [ ! -d "$WORKFLOWS_DST" ]; then
 fi
 
 # Check for existing GSD workflow files
-EXISTING=$(ls "$WORKFLOWS_DST"/gsd-*.md 2>/dev/null | wc -l | tr -d ' ')
+EXISTING=$(ls "$WORKFLOWS_DST"/gsd-*.md 2>/dev/null | wc -l | tr -d ' ' || echo "0")
 if [ "$EXISTING" -gt 0 ]; then
   echo "Found $EXISTING existing GSD workflow file(s) in $WORKFLOWS_DST"
   echo "These will be overwritten."
