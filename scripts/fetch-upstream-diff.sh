@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-UPSTREAM_REPO="https://github.com/mizvekov/get-shit-done.git"
+UPSTREAM_REPO="https://github.com/gsd-build/get-shit-done.git"
 WORK_DIR="$HOME/.gemini/gsd-sync-tmp"
 LOCAL_VERSION_FILE="$HOME/.agents/.gsd-synced-version"
 

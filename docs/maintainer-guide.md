@@ -2,7 +2,7 @@
 
 This guide is for developers maintaining the `antigravity-gsd` repository. It
 explains the technical process of porting updates from the
-[native Claude Code GSD repository](https://github.com/mizvekov/get-shit-done).
+[official GSD repository](https://github.com/gsd-build/get-shit-done).
 
 ## The Sync Architecture
 
